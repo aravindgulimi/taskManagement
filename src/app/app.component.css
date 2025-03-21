@@ -1,0 +1,114 @@
+.mat-toolbar.mat-primary {
+  background: #010e1b !important;
+  color: #fff !important;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.spacer {
+  flex-grow: 1; /* Pushes profile icon to the right */
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.profile-button {
+  color: white !important;
+  display: flex;
+  align-items: center;
+}
+
+.white-icon {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.drop-down {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  min-width: 120px;
+  z-index: 100;
+}
+
+.header-right:hover .drop-down {
+  display: block;
+}
+
+.drop-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.drop-down li {
+  padding: 8px;
+  text-align: center;
+}
+
+.drop-down a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  display: block;
+}
+
+.drop-down a:hover {
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+.profile-menu {
+  font-size: 14px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 8px 0;
+}
+
+
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Show dropdown only when hovering over the profile button */
+.profile-container:hover .dropdown-profile {
+  display: block;
+}
+
+/* Ensure dropdown is hidden by default */
+.dropdown-profile {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/* Prevent hover on username from triggering the dropdown */
+.user-name {
+  margin-right: 10px;
+  cursor: default;
+}
+

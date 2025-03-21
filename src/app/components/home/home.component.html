@@ -1,0 +1,29 @@
+<div class="d-flex vh-100 justify-content-center align-items-center bg-light">
+  <div class="card p-4 shadow-lg text-center welcome-card">
+    <h4 class="fw-bold">{{ title }}</h4>
+    <p class="text-muted">{{ heading }}</p>
+    <p class="fw-semibold">{{ sub_header }}</p>
+
+    <ul class="task-list text-start">
+      <li *ngFor="let task of header1">{{ task }}</li>
+    </ul>
+
+    <p class="mt-3">
+      Take control of your workflow and make task management seamless!
+    </p>
+
+    <div class="mt-3" *ngIf="!isUserLoggedIn">
+      <span>Existing User Log-In. 👉</span>
+      <button type="button" class="btn btn-success" (click)="login()">
+        Log In
+      </button>
+    </div>
+
+    <p class="mt-3" *ngIf="!isUserLoggedIn">
+      Landed for the first time?
+      <a routerLink="/registration" class="text-primary" (click)="signUp()"
+        >Sign Up</a
+      >
+    </p>
+  </div>
+</div>

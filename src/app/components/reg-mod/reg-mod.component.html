@@ -1,0 +1,330 @@
+<div
+  class="container d-flex justify-content-center align-items-center min-vh-100"
+>
+  <div class="card shadow-lg p-4 w-50">
+    <h2 class="text-center mb-4">Sign Up 👇</h2>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmitReg()">
+      <div class="row">
+        <!-- First Name -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label"
+            ><b><i>First Name</i></b></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="First Name"
+            formControlName="firstName"
+          />
+        </div>
+
+        <!-- First Name Validation -->
+        <div
+          *ngIf="registrationForm.get('firstName')?.hasError('invalidName')"
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['firstName']['errors']?.['invalidName']}}
+          </small>
+        </div>
+
+        <div
+          *ngIf="registrationForm.get('firstName')?.hasError('noSpaceAllowed')"
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['firstName']['errors']?.['noSpaceAllowed']}}
+          </small>
+        </div>
+
+        <div
+          *ngIf="
+            registrationForm.get('firstName')?.hasError('minLength') &&
+            registrationForm.get('firstName')?.touched
+          "
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['firstName']['errors']?.['minLength']}}
+          </small>
+        </div>
+
+        <div
+          *ngIf="registrationForm.get('firstName')?.hasError('maxLength')"
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['firstName']['errors']?.['maxLength']}}
+          </small>
+        </div>
+
+        <!-- Sur Name -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label"
+            ><b><i>Sur Name</i></b></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Last Name"
+            formControlName="surName"
+          />
+        </div>
+
+        <!-- Suranme Name Validation -->
+        <div
+          *ngIf="registrationForm.get('surName')?.hasError('invalidName')"
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['surName']['errors']?.['invalidName']}}
+          </small>
+        </div>
+
+        <div
+          *ngIf="registrationForm.get('surName')?.hasError('noSpaceAllowed')"
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['surName']['errors']?.['noSpaceAllowed']}}
+          </small>
+        </div>
+
+        <div
+          *ngIf="
+            registrationForm.get('surName')?.hasError('minLength') &&
+            registrationForm.get('surName')?.touched
+          "
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['surName']['errors']?.['minLength']}}
+          </small>
+        </div>
+
+        <div
+          *ngIf="registrationForm.get('surName')?.hasError('maxLength')"
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['surName']['errors']?.['maxLength']}}
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Email -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label"
+            ><b><i>Email</i></b></label
+          >
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            formControlName="gmail"
+          />
+        </div>
+
+        <!-- email Validation -->
+        <div
+          *ngIf="registrationForm.get('gmail')?.hasError('invalidDomain')"
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['gmail']['errors']?.['invalidDomain']}}
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Phone Number -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label"
+            ><b><i>Phone Number:</i></b></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="1234567890"
+            formControlName="phoneNo"
+          />
+        </div>
+
+        <!-- Phone Number Validation -->
+        <div
+          *ngIf="registrationForm.get('phoneNo')?.hasError('validPhoneNumber')"
+          class="text-danger"
+        >
+          <small>
+            {{registrationForm.controls['phoneNo']['errors']?.['validPhoneNumber']}}
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label"
+            ><b><i>Password</i></b></label
+          >
+          <input
+            type="password"
+            class="form-control"
+            placeholder="******"
+            formControlName="password"
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label"
+            ><b><i>Confirm Password</i></b></label
+          >
+          <input
+            type="password"
+            class="form-control"
+            placeholder="******"
+            formControlName="confirmPassword"
+          />
+        </div>
+
+        <div *ngIf="registrationForm.hasError('passwordMismatch') && registrationForm.get('confirmPassword')?.touched" class="text-danger">
+          <small>Passwords do not match.</small>
+        </div>
+        
+      </div>
+
+      <!-- Gender -->
+      <div class="mb-3">
+        <label class="form-label"
+          ><b><i>Gender : </i></b></label
+        >
+        &nbsp;
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            value="male"
+            id="male"
+            formControlName="gender"
+          />
+          <label for="male" class="form-check-label">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            value="female"
+            id="female"
+            formControlName="gender"
+          />
+          <label for="female" class="form-check-label">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            value="other"
+            id="other"
+            formControlName="gender"
+          />
+          <label for="other" class="form-check-label">Prefer not to say</label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-success w-100"
+        *ngIf="registrationForm.valid && registrationForm.dirty"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+      <!-- Address -->
+      <!-- <div class="mb-3" formGroupName="address">
+        <label class="form-label"
+          ><b><i>Address</i></b></label
+        >
+        <input
+          type="text"
+          class="form-control mb-2"
+          placeholder="Street Address"
+          formControlName="street"
+        />
+
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <select class="form-select" formControlName="country">
+              <option hidden>Country</option>
+              <option>America</option>
+              <option>Japan</option>
+              <option>India</option>
+              <option>Nepal</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="City"
+              formControlName="city"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Region"
+              formControlName="region"
+            />
+          </div>
+          <div class="col-md-6 mb-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Postal Code"
+              formControlName="postalCode"
+            />
+            <small>* Enter 6 digit postal Code</small>
+          </div>
+        </div>
+      </div> -->
+
+
+<!-- Skills
+        <div class="mb-3" formArrayName="skills">
+          <label class="form-label">Skills:</label>
+          <div *ngFor="let skill of skills.controls; let i = index" class="d-flex mb-2">
+            <input type="text" [formControlName]="i" class="form-control me-2" placeholder="Add Skills..."/>
+            <button type="button" class="btn btn-danger btn-sm" (click)="removeSkills(i)">Delete</button>
+          </div>
+          <button type="button" class="btn btn-secondary" (click)="addSkills()">Add Skills</button>
+        </div> -->
+
+<!-- <div class="row">
+          Username
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Username</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Username" formControlName="userName"/>
+              <button type="button" class="btn btn-primary" (click)="generateUsername()">Generate</button>
+            </div>
+          </div>
+  
+          Date of Birth
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" formControlName="dateOfBirth"/>
+          </div>
+        </div> -->
